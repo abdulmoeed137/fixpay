@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="fixmoney.fixshix.com.fixshixmoney">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppCustomTheme2"
+        android:name="android.support.multidex.MultiDexApplication"
+        >
+
+        <activity android:name=".Activities.SignInActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.SignUpActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.DashboardActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.MerchantListActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.ScanActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.MerchantProfileActivity"
+            android:screenOrientation="portrait">
+
+
+
+        </activity>
+        <activity android:name=".Activities.UserProfileIDActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.FinalShareActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.MerchantProfileIDActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.UploadFundsActivity" ></activity>
+        <activity android:name=".Activities.TermsAndConditionsActivity" android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>

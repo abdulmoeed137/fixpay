@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "889980749570",
+    "firebase_url": "https://fixpay-af3e5.firebaseio.com",
+    "project_id": "fixpay-af3e5",
+    "storage_bucket": "fixpay-af3e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889980749570:android:526dcc460a1177cd",
+        "android_client_info": {
+          "package_name": "fixmoney.fixshix.com.fixshixmoney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889980749570-jjjhj6nijt4cfgmm1ci9lbimb9q9c4m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtuxIeHoKtAGB39cPPs2LGBoDiR1fn-xY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

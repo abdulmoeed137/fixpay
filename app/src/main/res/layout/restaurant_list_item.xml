@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            app:cardUseCompatPadding="true"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:minHeight="100dp"
+                android:id="@+id/container">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_alignBottom="@+id/name_container"
+    android:layout_alignParentRight="true">
+    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/name_container"
+        android:layout_marginBottom="7dp"
+        android:layout_gravity="center_vertical"
+        android:text="Rs "
+        android:textSize="20dp"
+        android:textColor="@color/fbutton_color_pomegranate"
+        />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_alignBottom="@+id/name_container"
+                    android:layout_marginBottom="7dp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/amount"
+                    android:layout_alignParentRight="true"
+                    android:text=" 20"
+                    android:textSize="22dp"
+                    android:textColor="@color/fbutton_color_pomegranate"
+                    />
+
+</LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name_container"
+                    android:orientation="vertical"
+                  android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:layout_toRightOf="@+id/tawseel_container">
+
+
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="KFC North Nazimabad"
+                        android:textSize="17dp"
+                        android:textColor="@color/fbutton_color_midnight_blue"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/name" />
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="abc@yahoo.com"
+                        android:textSize="12dp"
+                        android:textColor="@color/fbutton_color_pomegranate"
+                        android:layout_marginBottom="3dp"
+                        android:id="@+id/email" />
+
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="03442928117"
+                        android:textSize="9dp"
+                        android:textColor="@color/fbutton_color_wet_asphalt"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/contact" />
+
+
+
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/circle_border"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:id="@+id/tawseel_container">
+
+
+                   <ImageView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:src="@drawable/fixshixlogo"
+                       android:id="@+id/image"/>
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>
