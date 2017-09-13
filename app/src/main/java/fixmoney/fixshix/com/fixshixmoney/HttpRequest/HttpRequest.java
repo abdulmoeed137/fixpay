@@ -44,7 +44,7 @@ public class HttpRequest {
         });
         hashMap.put("hash","starlet");
         String URL = utils.URLwithParams(url,hashMap);
-        Log.d(URL, "SyncHttpRequest: ");
+        Log.d( "SyncHttpRequest: ",URL);
         JSONObject response = null;
         final RequestQueue requestQueue;
         requestQueue = Volley.newRequestQueue(c);

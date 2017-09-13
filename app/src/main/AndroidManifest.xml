@@ -40,8 +40,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".Activities.MerchantProfileIDActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.UploadFundsActivity" ></activity>
+        <activity android:name=".Activities.UploadFundsActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".Activities.TermsAndConditionsActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.ForgetPasswordActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

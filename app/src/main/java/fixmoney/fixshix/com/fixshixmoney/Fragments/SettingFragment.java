@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -87,7 +88,7 @@ public class SettingFragment extends Fragment {
 
                     try {
 
-                        bitmap = StringToQR.TextToImageEncode(new SessionManager(getActivity()).getId(), getActivity());
+                        bitmap = StringToQR.TextToImageEncode(new SessionManager(context).getId(), getActivity());
 
                         ((Activity)context).runOnUiThread(new Runnable() {
                             @Override
@@ -108,7 +109,9 @@ public class SettingFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                new AlertDialog.Builder(context)
+
                         .setTitle("Confirm")
                         .setMessage("Are You Sure You Want To Logout?")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

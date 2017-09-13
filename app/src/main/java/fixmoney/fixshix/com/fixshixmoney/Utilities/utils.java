@@ -1,19 +1,46 @@
 package fixmoney.fixshix.com.fixshixmoney.Utilities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.os.Handler;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
+import fixmoney.fixshix.com.fixshixmoney.Activities.SignInActivity;
+import fixmoney.fixshix.com.fixshixmoney.Activities.SignUpActivity;
 import fixmoney.fixshix.com.fixshixmoney.Constants.Constants;
+import fixmoney.fixshix.com.fixshixmoney.DialogBox;
+import fixmoney.fixshix.com.fixshixmoney.HttpRequest.HttpRequest;
 import fixmoney.fixshix.com.fixshixmoney.R;
+import fixmoney.fixshix.com.fixshixmoney.SessionManager.SessionManager;
+import fixmoney.fixshix.com.fixshixmoney.Snackbar.SnackBar;
+import fixmoney.fixshix.com.fixshixmoney.Toast.Toast;
+import fixmoney.fixshix.com.fixshixmoney.Validity.Validity;
 
 /**
  * Created by lenovo on 8/27/2017.
@@ -82,4 +109,19 @@ public class utils {
         }
     }
 
-}
+    public static Dialog TransactionDialog(final Context context) {
+
+        final boolean[] ret = {false};
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.setContentView(R.layout.transaction_password_dialog);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(((Activity) context).getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.gravity = Gravity.BOTTOM;
+        lp.dimAmount = 0.3f;
+        dialog.show();
+        return dialog;
+    }}

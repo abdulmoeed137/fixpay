@@ -1,11 +1,14 @@
 package fixmoney.fixshix.com.fixshixmoney.Activities;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -27,8 +30,11 @@ import fixmoney.fixshix.com.fixshixmoney.HttpRequest.HttpRequest;
 import fixmoney.fixshix.com.fixshixmoney.R;
 import fixmoney.fixshix.com.fixshixmoney.SessionManager.SessionManager;
 import fixmoney.fixshix.com.fixshixmoney.Snackbar.SnackBar;
+import fixmoney.fixshix.com.fixshixmoney.Toast.Toast;
 import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
 import fixmoney.fixshix.com.fixshixmoney.Validity.Validity;
+
+import static fixmoney.fixshix.com.fixshixmoney.Utilities.utils.hideSoftKeyboard;
 
 public class MerchantProfileActivity extends FragmentActivity {
     LinearLayout container;
@@ -41,6 +47,7 @@ public class MerchantProfileActivity extends FragmentActivity {
     EditText amount;
     ProgressBar progressBar;
     TextView final_amount;
+    boolean isT_passVerified=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +58,7 @@ public class MerchantProfileActivity extends FragmentActivity {
 
 
     public void initialize(){
+        isT_passVerified=false;
         container = (LinearLayout)findViewById(R.id.container);
 
 
@@ -132,57 +140,65 @@ public class MerchantProfileActivity extends FragmentActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txt_amount=amount.getText().toString();
-                String final_amount = MerchantProfileActivity.this.final_amount.getText().toString();
+
+                final String txt_amount=amount.getText().toString();
+                final String final_amount = MerchantProfileActivity.this.final_amount.getText().toString();
                 Intent intent = getIntent();
                 Bundle extras = intent.getExtras();
-                String merchant_id = extras.getString("merchant_id");
+                final String merchant_id = extras.getString("merchant_id");
                 if (Validity.isAmountTrue(txt_amount,MerchantProfileActivity.this)){
-                if (universal.isChecked())
-                {
-                    String txt_universal = universal_amount.getText().toString();
-                    String[] splited = txt_universal.split("\\s+");
-
-                    if (Double.parseDouble(final_amount) <= Double.parseDouble(splited[1]))
+                    if (universal.isChecked())
                     {
+                        String txt_universal = universal_amount.getText().toString();
+                        String[] splited = txt_universal.split("\\s+");
 
-                     MakeTransaction(new SessionManager(MerchantProfileActivity.this).getId(),merchant_id,"2","abc123",final_amount);
+                        if (Double.parseDouble(final_amount) <= Double.parseDouble(splited[1]))
+                        {
+
+                            MakeTransaction(new SessionManager(MerchantProfileActivity.this).getId(),merchant_id,"2","abc123",final_amount);
+
+                        }
+                        else
+                        {
+                            SnackBar.makeCustomSnack(MerchantProfileActivity.this,"You can use maximum "+splited[1]+" from your Universal Amount.");
+                        }
+
+                    }
+                    else if (discounted.isChecked())
+                    {
+                        String txt_discounted= discounted_amount.getText().toString();
+                        String[] splited =  txt_discounted.split("\\s+");
+
+                        if (Double.parseDouble(final_amount) <= Double.parseDouble(splited[1]))
+                        {
+
+                            MakeTransaction(new SessionManager(MerchantProfileActivity.this).getId(),merchant_id,"1","abc123",final_amount);
+
+
+                        }
+                        else
+                        {
+                            SnackBar.makeCustomSnack(MerchantProfileActivity.this,"You can use maximum "+splited[1]+" from your Discounted Amount.");
+                        }
                     }
                     else
                     {
-                        SnackBar.makeCustomSnack(MerchantProfileActivity.this,"You can use maximum "+splited[1]+" from your Universal Amount.");
-                    }
 
-                }
-                else if (discounted.isChecked())
-                {
-                    String txt_discounted= discounted_amount.getText().toString();
-                    String[] splited =  txt_discounted.split("\\s+");
-
-                    if (Double.parseDouble(final_amount) <= Double.parseDouble(splited[1]))
-                    {
-                        MakeTransaction(new SessionManager(MerchantProfileActivity.this).getId(),merchant_id,"1","abc123",final_amount);
-                    }
-                    else
-                    {
-                        SnackBar.makeCustomSnack(MerchantProfileActivity.this,"You can use maximum "+splited[1]+" from your Discounted Amount.");
-                    }
-                }
-                else
-                {
-
-                    if (universal_amount.getText().toString().equals("Rs: 0") && discounted_amount.getText().toString().equals("Rs: 0"))
-                       {
-                           SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this,"You don't have sufficient funds ");
-                       }
-                       else
+                        if (universal_amount.getText().toString().equals("Rs: 0") && discounted_amount.getText().toString().equals("Rs: 0"))
+                        {
+                            SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this,"You don't have sufficient funds ");
+                        }
+                        else
                         {
                             SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this,"Please Select Payment Type");
                         }
 
+                    }
+
                 }
 
-            }}
+
+          }
         });
 
 
@@ -217,69 +233,161 @@ public class MerchantProfileActivity extends FragmentActivity {
         );
     }
 
-    public void MakeTransaction(String user_id, String merchant_id, String transaction_type, String qr, final String amount)
+    public void MakeTransaction(final String user_id, final String merchant_id, final String transaction_type, final String qr, final String amount)
         {
 
-            final HashMap<String, String> hashMap = new HashMap<String, String>();
-            hashMap.put("user_id", user_id);
-            hashMap.put("merchant_id", merchant_id);
-            hashMap.put("amount", "-"+amount);
-            hashMap.put("qr_code", qr);
-            hashMap.put("transaction_type", transaction_type);
 
-            Executor executor = Executors.newSingleThreadExecutor();
-            executor.execute(new Runnable() {
-                public void run() {
+            final Dialog dialog = utils.TransactionDialog(MerchantProfileActivity.this);
+            final EditText input = (EditText) dialog.findViewById(R.id.input);
+            final ProgressBar progressBar = (ProgressBar)dialog.findViewById(R.id.pbar);
+            dialog.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (input.getText().toString().length()== 4) {
+                        final HashMap<String, String> hashMap = new HashMap<String, String>();
 
-                    JSONObject response = HttpRequest.SyncHttpRequest(MerchantProfileActivity.this, Constants.make_transaction, hashMap, progressBar);
+                        hashMap.put("number", new SessionManager(MerchantProfileActivity.this).getContact());
+                        hashMap.put("t_password", input.getText().toString());
+                        Executor executor = Executors.newSingleThreadExecutor();
+                        executor.execute(new Runnable() {
+                            @Override
+                            public void run() {
 
-                    if (response != null) {
-                        try {
+                                final JSONObject response = HttpRequest.SyncHttpRequest(MerchantProfileActivity.this, Constants.isTransactionPasswordTrue, hashMap, progressBar);
 
-                            if (response.names().get(0).equals("success")) {
-                                String current_amount=  new SessionManager(MerchantProfileActivity.this).getAmount();
-                                Double new_amount = Double.parseDouble(current_amount)- Double.parseDouble(amount);
-                                new SessionManager().setAmount(MerchantProfileActivity.this,new_amount.toString());
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                                                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                                        SnackBar.makeCustomSnack(MerchantProfileActivity.this, "Transaction Proceed.");
 
-                                        Handler handler = new Handler();
+                                if (response != null) {
+                                    try {
 
-                                        handler.postDelayed(new Runnable() {
+                                        Log.d("yoyo", response + "");
+                                        if (response.names().get(0).equals("success")) {
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Toast.makeCustomToast(MerchantProfileActivity.this,"Verified");
+                                                    dialog.dismiss();
+
+
+                                                    final HashMap<String, String> hashMap = new HashMap<String, String>();
+                                                    hashMap.put("user_id", user_id);
+                                                    hashMap.put("merchant_id", merchant_id);
+                                                    hashMap.put("amount", "-"+amount);
+                                                    hashMap.put("qr_code", qr);
+                                                    hashMap.put("transaction_type", transaction_type);
+
+                                                    Executor executor = Executors.newSingleThreadExecutor();
+                                                    executor.execute(new Runnable() {
+                                                        public void run() {
+
+                                                            JSONObject response = HttpRequest.SyncHttpRequest(MerchantProfileActivity.this, Constants.make_transaction, hashMap, progressBar);
+
+                                                            if (response != null) {
+                                                                try {
+
+                                                                    if (response.names().get(0).equals("success")) {
+                                                                        String current_amount=  new SessionManager(MerchantProfileActivity.this).getAmount();
+                                                                        Double new_amount = Double.parseDouble(current_amount)- Double.parseDouble(amount);
+                                                                        new SessionManager().setAmount(MerchantProfileActivity.this,new_amount.toString());
+                                                                        runOnUiThread(new Runnable() {
+                                                                            @Override
+                                                                            public void run() {
+                                                                                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                                                                                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                                                                SnackBar.makeCustomSnack(MerchantProfileActivity.this, "Transaction Proceed.");
+
+                                                                                Handler handler = new Handler();
+
+                                                                                handler.postDelayed(new Runnable() {
+                                                                                    public void run() {
+                                                                                        setResult(RESULT_OK);
+                                                                                        finish();
+                                                                                    }
+                                                                                }, 1000);
+                                                                            }
+                                                                        });
+
+
+                                                                    } else if (response.names().get(0).equals("failed")) {
+
+                                                                        SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Transaction can't proceed.");
+                                                                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                                                                    } else {
+
+                                                                        SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Server Maintenance is on Progress");
+                                                                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                                                                    }
+                                                                } catch (JSONException e) {
+
+                                                                    SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Server Maintenance is on Progress");
+                                                                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                                                                }
+                                                            }
+
+                                                        }
+                                                    });
+                                                }
+                                            });
+
+
+
+                                            dialog.dismiss();
+                                        } else if (response.names().get(0).equals("failed")) {
+
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    try {
+                                                        Toast.makeCustomErrorToast(MerchantProfileActivity.this, response.getString("failed"));
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            });
+
+
+                                        } else {
+
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    try {
+                                                        Toast.makeCustomErrorToast(MerchantProfileActivity.this, response.getString("failed"));
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            });
+
+                                        }
+                                    } catch (JSONException e) {
+
+                                        runOnUiThread(new Runnable() {
+                                            @Override
                                             public void run() {
-                                                setResult(RESULT_OK);
-                                                finish();
+                                                Toast.makeCustomErrorToast(MerchantProfileActivity.this, "System Maintenance on Progress. Try bit Later ");
                                             }
-                                        }, 1000);
+                                        });
+
+
                                     }
-                                });
 
-
-                            } else if (response.names().get(0).equals("failed")) {
-
-                                SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Transaction can't proceed.");
-                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
-                            } else {
-
-                                SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Server Maintenance is on Progress");
-                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                }
 
                             }
-                        } catch (JSONException e) {
-
-                            SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Server Maintenance is on Progress");
-                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
-                        }
+                        });}
+                    else
+                    {
+                        Toast.makeCustomErrorToast(MerchantProfileActivity.this, "Transaction Password must have 4 digits!");
                     }
 
                 }
             });
+
+
+
 
 
 

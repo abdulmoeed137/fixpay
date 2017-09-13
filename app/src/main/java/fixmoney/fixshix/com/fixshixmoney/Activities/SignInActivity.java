@@ -46,6 +46,8 @@ public class SignInActivity extends AppCompatActivity {
     final Handler handler = new Handler();
     ProgressBar progressBar;
     EditText contact , password;
+    TextView forgetPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,6 +150,13 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignInActivity.this,ForgetPasswordActivity.class));
+            }
+        });
+
     }
 
 
@@ -161,6 +170,6 @@ public class SignInActivity extends AppCompatActivity {
         progressBar = (ProgressBar)this.findViewById(R.id.pbar);
         contact = (EditText)this.findViewById(R.id.contact);
         password = (EditText)this.findViewById(R.id.password);
-
+        forgetPassword = (TextView)this.findViewById(R.id.forgotPassword);
     }
 }

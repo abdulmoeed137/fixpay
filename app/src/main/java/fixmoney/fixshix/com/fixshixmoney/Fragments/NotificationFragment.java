@@ -98,14 +98,14 @@ public class NotificationFragment  extends Fragment {
                     try {
 
                         if (response.names().get(0).equals("success")) {
-
+                            Double amount2 =0.0;
                             Log.d("errorr",response+"");
                             JSONArray data = response.getJSONArray("success");
 
                             for (int i = 0 ; i<data.length(); i ++)
                             {
                                 JSONObject row = data.getJSONObject(i);
-
+                                amount2 = amount2+Double.parseDouble(row.getString("amount"));
                                 String transaction_id = row.getString("transaction_id");
                                 String transaction_type = row.getString("transaction_type");
                                 String amount = row.getString("amount");
@@ -132,7 +132,7 @@ public class NotificationFragment  extends Fragment {
                                 {
                                     if (t_amount<0)
                                     {
-                                        notification="You Paid To "+merchant_name;
+                                        notification="You Paid "+merchant_name;
                                     }
                                     else
                                         notification="You Received From "+ merchant_name;
@@ -150,12 +150,13 @@ public class NotificationFragment  extends Fragment {
                                 ));
                             }
 
+                            final Double finalAmount = amount2;
                             ((Activity) context).runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
 
                                     listView.setAdapter(new NotificationAdapter(context,list));
-
+                                    new SessionManager().setAmount(context, finalAmount.toString());
                                 }
                             });
 

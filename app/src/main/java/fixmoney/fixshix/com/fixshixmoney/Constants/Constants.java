@@ -16,6 +16,10 @@ public class Constants {
     public  static  String share_transaction = MAINURL+"share_transaction.php";
     public  static  String use_qr = MAINURL+"use_qr.php";
     public  static  String checkifnumberexist = MAINURL+"checkifnumberexist.php";
+    public  static  String checkifnumberexistforget = MAINURL+"checkifnumberexistforget.php";
+    public  static  String forgetpassword = MAINURL+"forget_password2.php";
+    public  static  String isTransactionPasswordTrue = MAINURL+"isTransactionPasswordTrue.php";
+    public  static  String total_transaction = MAINURL+"total_transaction.php";
 
 
     public  static  String IMAGE_FOLDER = MAINURL+"../merchant_images/";

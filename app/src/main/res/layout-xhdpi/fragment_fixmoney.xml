@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     android:id="@+id/keyboard">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/pbar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,13 +55,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.1">
 
-            <ProgressBar
-                android:id="@+id/pbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
-                android:visibility="gone"
-                android:layout_centerHorizontal="true"/>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,6 +94,15 @@
                         android:textSize="24dp"
                         android:textColor="@color/fbutton_color_midnight_blue"
                         />
+
+                        <ImageButton
+                            android:layout_gravity="center"
+                            android:layout_width="25dp"
+                            android:id="@+id/refresh"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@drawable/refresh2"/>
+
                 </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
@@ -118,9 +132,9 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
 
-    android:text="Pay"
+    android:text="Pay Merchants"
     android:textColor="@color/fbutton_color_midnight_blue"
-    android:textSize="24dp" />
+    android:textSize="18dp" />
 </LinearLayout>
     <LinearLayout
        android:id="@+id/tab2"
@@ -143,7 +157,7 @@
 
             android:text="Receive"
             android:textColor="@color/fbutton_color_midnight_blue"
-            android:textSize="24dp" />
+            android:textSize="18dp" />
 
     </LinearLayout>
     <LinearLayout
@@ -162,8 +176,8 @@
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Share"
-            android:textSize="24dp"
+            android:text="Share with Friends"
+            android:textSize="18dp"
             android:textColor="@color/fbutton_color_midnight_blue"
           />
     </LinearLayout>
@@ -232,5 +246,5 @@
 
     </LinearLayout>
 
-
+</RelativeLayout>
 </LinearLayout>

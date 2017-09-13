@@ -40,7 +40,7 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="fixshix">FixShix</string>
     <string name="fixmoney">FixWallet</string>
-    <string name="notification">Notification</string>
+    <string name="notification">Notifications</string>
     <string name="setting">Settings</string>
     <string name="ac">AC/Refrigerator</string>
     <string name="electrition">Electrician</string>
@@ -70,5 +70,5 @@ Aluminium</string>
     <string name="settings">Settings </string>
     <string name="tnc">Terms and Conditions</string>
     <string name="universal">Universal</string>
-    <string name="discount">Discounted</string>
+    <string name="discount">Discount</string>
 </resources>

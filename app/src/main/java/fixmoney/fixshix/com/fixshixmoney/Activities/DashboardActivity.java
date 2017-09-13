@@ -54,7 +54,7 @@ public class DashboardActivity extends AppCompatActivity {
         View view3 = inflater.inflate(R.layout.tab_text_layout, null);
         TextView text3 = (TextView) view3.findViewById(R.id.tab_text);
         ImageView imageView3 = (ImageView)view3.findViewById(R.id.tab_img);
-        text3.setText("Notification");
+        text3.setText("Notifications");
         imageView3.setImageDrawable(getResources().getDrawable(R.drawable.notification));
 
       tabLayout.getTabAt(1).setCustomView(view3);
