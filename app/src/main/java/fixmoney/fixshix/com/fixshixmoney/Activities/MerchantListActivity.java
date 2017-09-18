@@ -102,7 +102,6 @@ public class MerchantListActivity extends AppCompatActivity {
                                          row.getString("amount")
                                  ));
                             }
-
                             final Double finalAmount = amount;
                             runOnUiThread(new Runnable() {
                                 @Override
