@@ -1,10 +1,14 @@
 package fixmoney.fixshix.com.fixshixmoney.Fragments;
 
+import android.Manifest;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +65,10 @@ public class BarCodeFragment extends Fragment implements ZBarScannerView.ResultH
     public void onResume() {
         super.onResume();
         mScannerView.setResultHandler(this);
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_DENIED){
+            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA}, 100);}
+        else
         mScannerView.startCamera();
     }
 
@@ -304,6 +312,15 @@ public class BarCodeFragment extends Fragment implements ZBarScannerView.ResultH
 
 
   }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 100) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                onResume();
+            } else SnackBar.makeCustomSnack(getActivity(),"Permission Required to Access Camera");
+        }
 
+    }
 
 }

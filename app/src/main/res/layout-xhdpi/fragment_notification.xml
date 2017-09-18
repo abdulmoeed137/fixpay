@@ -44,6 +44,19 @@
             android:layout_height="match_parent"
             android:layout_weight="0.1">
 
+            <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                android:drawableStart="@drawable/empty_noti"
+                android:id="@+id/empty_noti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="20dp"
+                android:visibility="gone"
+
+                android:gravity="center"
+                android:text="Notifications Empty!\n Pull Down To Refresh"
+                android:drawableLeft="@drawable/empty_noti" />
+
             <ProgressBar
                 android:id="@+id/pbar"
                 android:layout_width="wrap_content"

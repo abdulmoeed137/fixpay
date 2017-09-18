@@ -104,6 +104,9 @@
                               android:layout_weight="0.8"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
                         <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
                             android:id="@+id/id"
                             android:layout_width="wrap_content"
@@ -111,6 +114,14 @@
                             android:text="1122"
                             android:textColor="@color/mainColor"
                             android:textSize="44dp" />
+                            <ImageButton
+                                android:layout_gravity="center"
+                                android:layout_width="25dp"
+                                android:id="@+id/copy"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="4dp"
+                                android:background="@drawable/copy"/>
+                        </LinearLayout>
                         <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
 
                            android:layout_marginTop="-5dp"
@@ -135,6 +146,7 @@
                     android:layout_height="1dp"
                     android:background="@color/mainColor"></LinearLayout>
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"

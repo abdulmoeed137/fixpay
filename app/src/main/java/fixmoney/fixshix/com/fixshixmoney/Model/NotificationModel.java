@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by lenovo on 8/30/2017.
  */
 
-public class NotificationModel implements Parcelable {
+public class NotificationModel {
     private  String transaction_id,transaction_type, amount,user_name, merchant_name,time, notification;
 
     public NotificationModel (String transaction_id,String transaction_type, String amount,String user_name,String  merchant_name,String time, String notification)
@@ -60,31 +60,5 @@ public class NotificationModel implements Parcelable {
         return notification;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel out, int flags) {
-
-        out.writeString(transaction_id);
-        out.writeString(transaction_type);
-        out.writeString(amount);
-        out.writeString(user_name);
-        out.writeString(merchant_name);
-        out.writeString(notification);
-        out.writeString(time);
-
-    }
-
-    public static final Parcelable.Creator<NotificationModel> CREATOR = new Parcelable.Creator<NotificationModel>() {
-        public NotificationModel createFromParcel(Parcel in) {
-            return new NotificationModel(in);
-        }
-
-        public NotificationModel[] newArray(int size) {
-            return new NotificationModel[size];
-        }
-    };
 }

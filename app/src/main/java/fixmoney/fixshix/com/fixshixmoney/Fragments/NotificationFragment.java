@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,16 +42,16 @@ public class NotificationFragment  extends Fragment {
     ProgressBar progressBar;
     ArrayList<NotificationModel> list = new ArrayList<>();
     SwipeRefreshLayout switeRefreshLayout ;
-
+    TextView empty_notification;
     public NotificationFragment(){}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null)
+        if (new SessionManager(context).getList(context) != null )
         {
 
-            //list = savedInstanceState.getParcelableArrayList("list");
+            list = new SessionManager(context).getList(context);
 
         }
     }
@@ -64,6 +65,7 @@ public class NotificationFragment  extends Fragment {
         return rootView;
     }
     private void setUpComponent() {
+
 
 
         if (list.isEmpty())
@@ -98,6 +100,7 @@ public class NotificationFragment  extends Fragment {
                     try {
 
                         if (response.names().get(0).equals("success")) {
+                            empty_notification.setVisibility(View.GONE);
                             Double amount2 =0.0;
                             Log.d("errorr",response+"");
                             JSONArray data = response.getJSONArray("success");
@@ -150,6 +153,7 @@ public class NotificationFragment  extends Fragment {
                                 ));
                             }
 
+                            new SessionManager(context).setList(list,context);
                             final Double finalAmount = amount2;
                             ((Activity) context).runOnUiThread(new Runnable() {
                                 @Override
@@ -162,7 +166,13 @@ public class NotificationFragment  extends Fragment {
 
                         } else if (response.names().get(0).equals("failed")) {
 
-                            SnackBar.makeCustomErrorSnack(context, response.getString("failed"));
+                          //  SnackBar.makeCustomErrorSnack(context, response.getString("failed"));
+                            ((Activity)context).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    empty_notification.setVisibility(View.VISIBLE);
+                                }
+                            });
 
                         } else {
 
@@ -187,15 +197,7 @@ public class NotificationFragment  extends Fragment {
         progressBar = (ProgressBar)rootView.findViewById(R.id.pbar);
         progressBar.bringToFront();
         switeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.swipeRefresh);
-
-    }
-
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-      //  outState.putParcelableArrayList("list",list);
+        empty_notification = (TextView)rootView.findViewById(R.id.empty_noti);
 
     }
 

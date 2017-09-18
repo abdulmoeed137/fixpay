@@ -2,8 +2,16 @@ package fixmoney.fixshix.com.fixshixmoney.SessionManager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 import fixmoney.fixshix.com.fixshixmoney.Constants.Constants;
+import fixmoney.fixshix.com.fixshixmoney.Model.NotificationModel;
 import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
 
 /**
@@ -13,7 +21,8 @@ import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
 public class SessionManager {
     private String id, name , email , contact, amount;
     SharedPreferences session ;
-
+    private String  qrimage;
+    private ArrayList<NotificationModel> list = new ArrayList<>();
     public SessionManager(){}
     public  SessionManager (Context c)
     {
@@ -90,5 +99,42 @@ public boolean CheckIfSessionExist(){
         editor.putString("amount", amount);
         editor.commit();
 
+    }
+
+
+
+    public Bitmap  getQrimage(Context c) {
+        session= c.getSharedPreferences(Constants.SESSION,Context.MODE_PRIVATE);
+       qrimage = session.getString("qrimage",null);
+        try {
+            return utils.decodeBase64(qrimage);
+        }
+        catch ( Exception e){
+            return null;}
+    }
+
+    public void setQrimage(Bitmap qrimage,Context c) {
+        session= c.getSharedPreferences(Constants.SESSION,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = session.edit();
+        editor.putString("qrimage", utils.encodeTobase64(qrimage));
+        editor.commit();
+    }
+
+    public ArrayList<NotificationModel> getList(Context c) {
+        session= c.getSharedPreferences(Constants.SESSION,Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = session.getString("notification_list", null);
+        Type type = new TypeToken<ArrayList<NotificationModel>>() {}.getType();
+        ArrayList<NotificationModel> arrayList = gson.fromJson(json, type);
+        return arrayList;
+    }
+
+    public void setList(ArrayList<NotificationModel> list, Context c ) {
+        session= c.getSharedPreferences(Constants.SESSION,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = session.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString("notification_list", json);
+        editor.commit();
     }
 }

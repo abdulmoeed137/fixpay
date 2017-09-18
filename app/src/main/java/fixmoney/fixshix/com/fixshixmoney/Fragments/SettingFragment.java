@@ -2,12 +2,17 @@ package fixmoney.fixshix.com.fixshixmoney.Fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,6 +36,10 @@ import fixmoney.fixshix.com.fixshixmoney.Activities.TermsAndConditionsActivity;
 import fixmoney.fixshix.com.fixshixmoney.QrCode.StringToQR;
 import fixmoney.fixshix.com.fixshixmoney.R;
 import fixmoney.fixshix.com.fixshixmoney.SessionManager.SessionManager;
+import fixmoney.fixshix.com.fixshixmoney.Snackbar.SnackBar;
+import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
+
+import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
  * Created by lenovo on 7/5/2017.
@@ -45,20 +54,10 @@ public class SettingFragment extends Fragment {
     Bitmap bitmap;
     Context context;
     LinearLayout logout, tnc;
-
+    ImageView  copy ;
     public SettingFragment(){}
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        if (savedInstanceState != null)
-        {
-
-            //bitmap = savedInstanceState.getParcelable("qr_image");
-
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,9 +73,10 @@ public class SettingFragment extends Fragment {
         id.setText((new SessionManager(getActivity()).getId()));
         name.setText((new SessionManager(getActivity()).getName()));
         contact.setText((new SessionManager(getActivity()).getContact()));
-
-        if (bitmap != null)
+        if (new SessionManager(context).getQrimage(context) != null )
         {
+
+            this.bitmap =  new SessionManager(context).getQrimage(context);
             qr.setImageBitmap(bitmap);
         }
         else {
@@ -88,7 +88,9 @@ public class SettingFragment extends Fragment {
 
                     try {
 
-                        bitmap = StringToQR.TextToImageEncode(new SessionManager(context).getId(), getActivity());
+                        bitmap = StringToQR.TextToImageEncode(new SessionManager(context).getId(), context);
+
+                        new SessionManager(context).setQrimage(bitmap,context);
 
                         ((Activity)context).runOnUiThread(new Runnable() {
                             @Override
@@ -136,6 +138,25 @@ public class SettingFragment extends Fragment {
                 startActivity(new Intent(context, TermsAndConditionsActivity.class));
             }
         });
+        qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (qr.getDrawable() != null )
+                {
+                    utils.ImageDialog(context,bitmap);
+                }
+            }
+        });
+        copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label",new SessionManager(context).getId());
+                clipboard.setPrimaryClip(clip);
+                SnackBar.makeCustomSnack(context,"ID copies to Clipboard");
+            }
+        });
     }
 
     private void initialize() {
@@ -147,14 +168,7 @@ public class SettingFragment extends Fragment {
         progressBar_qr = (ProgressBar)rootView.findViewById(R.id.pbar_qr);
         logout = (LinearLayout)rootView.findViewById(R.id.o3);
         tnc = (LinearLayout)rootView.findViewById(R.id.o2);
-
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        //outState.putParcelable("qr_image",bitmap);
+        copy = (ImageView) rootView.findViewById(R.id.copy);
 
     }
 
@@ -163,5 +177,6 @@ public class SettingFragment extends Fragment {
         super.onAttach(context);
         this.context = context;
     }
+
 }
 
