@@ -73,7 +73,7 @@ public class FinalShareActivity extends AppCompatActivity {
                         SnackBar.makeCustomErrorSnack(FinalShareActivity.this," Maximum "+merchant_amount+" can share");
                     }
                     else
-                    MakeTransaction(new SessionManager(FinalShareActivity.this).getId(), merchant_id, finalTransaction_type, "abc123",amount.toString(),utils.id
+                    MakeTransaction(new SessionManager(FinalShareActivity.this).getId(), merchant_id, finalTransaction_type, "",amount.toString(),utils.id
                     );
                 }            }
         });

@@ -155,7 +155,7 @@ public class MerchantProfileActivity extends FragmentActivity {
                         if (Double.parseDouble(final_amount) <= Double.parseDouble(splited[1]))
                         {
 
-                            MakeTransaction(new SessionManager(MerchantProfileActivity.this).getId(),merchant_id,"2","abc123",final_amount);
+                            MakeTransaction(new SessionManager(MerchantProfileActivity.this).getId(),merchant_id,"2","",final_amount);
 
                         }
                         else
@@ -172,7 +172,7 @@ public class MerchantProfileActivity extends FragmentActivity {
                         if (Double.parseDouble(final_amount) <= Double.parseDouble(splited[1]))
                         {
 
-                            MakeTransaction(new SessionManager(MerchantProfileActivity.this).getId(),merchant_id,"1","abc123",final_amount);
+                            MakeTransaction(new SessionManager(MerchantProfileActivity.this).getId(),merchant_id,"1","",final_amount);
 
 
                         }
