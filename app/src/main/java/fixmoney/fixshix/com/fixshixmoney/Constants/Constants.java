@@ -26,4 +26,10 @@ public class Constants {
 
 
     public  static  String SESSION="FixshixMoney";
+
+    public  static  String QR_KEY_RECEIVE="2382784738r3847834392382989238";
+
+    public  static  String QR_KEY_SHARE="398439842038s98323889283";
+
+    public  static  String QR_KEY_PAY="239829428392p558548485";
 }

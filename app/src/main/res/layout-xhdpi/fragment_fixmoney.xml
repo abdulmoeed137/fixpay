@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.9"
             android:gravity="center"
-            android:background="@color/fbutton_color_pomegranate"
+            android:background="@color/mainColor"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
             android:paddingBottom="5dp"

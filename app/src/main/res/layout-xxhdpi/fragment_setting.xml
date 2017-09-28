@@ -17,7 +17,7 @@
             android:layout_weight="0.9"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
-            android:background="@color/fbutton_color_peter_river"
+            android:background="@color/mainColor"
             android:paddingBottom="5dp"
             android:gravity="center"
             android:paddingTop="5dp">

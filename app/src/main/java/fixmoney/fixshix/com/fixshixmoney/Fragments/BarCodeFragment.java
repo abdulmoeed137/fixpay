@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 
 import org.json.JSONArray;
@@ -36,8 +35,11 @@ import fixmoney.fixshix.com.fixshixmoney.R;
 import fixmoney.fixshix.com.fixshixmoney.SessionManager.SessionManager;
 import fixmoney.fixshix.com.fixshixmoney.Snackbar.SnackBar;
 
+import static fixmoney.fixshix.com.fixshixmoney.Constants.Constants.QR_KEY_PAY;
+import static fixmoney.fixshix.com.fixshixmoney.Constants.Constants.QR_KEY_RECEIVE;
+import static fixmoney.fixshix.com.fixshixmoney.Constants.Constants.QR_KEY_SHARE;
 import static fixmoney.fixshix.com.fixshixmoney.Utilities.utils.scan_flow;
-
+import fixmoney.fixshix.com.fixshixmoney.Toast.Toast;
 
 public class BarCodeFragment extends Fragment implements ZBarScannerView.ResultHandler {
     private ZBarScannerView mScannerView;
@@ -96,6 +98,41 @@ public class BarCodeFragment extends Fragment implements ZBarScannerView.ResultH
     }
 
     private void debit_qr(String id) {
+        Log.d("debit_qr: ", id);
+       try
+       {
+           String[] parts= id.split(QR_KEY_RECEIVE);
+           Log.d("debit_qr: ", parts[0]);
+           id = parts[1];
+
+       }catch ( Exception e )
+       {
+           Log.d("ExceptionE",e.getMessage());
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                        SnackBar.makeCustomErrorSnack(getActivity(), "Invalid QR, Transaction Failed.");
+
+                        Handler handler = new Handler();
+
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                getActivity().finish();
+                            }
+                        }, 1000);
+                    }
+                });
+
+            }
+        });
+           return;
+       }
         final HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("qr",id);
         hashMap.put("user_id", new SessionManager(getActivity()).getId());
@@ -198,20 +235,94 @@ public class BarCodeFragment extends Fragment implements ZBarScannerView.ResultH
 
     }
 
-    private void share_qr(final String id) {
+    private void share_qr( String id) {
+        try
+        {
+            String[] parts= id.split(QR_KEY_SHARE);
+
+            id = parts[1];
+
+        }catch ( Exception e )
+        {
+            Log.d("ExceptionE",e.getMessage());
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                            SnackBar.makeCustomErrorSnack(getActivity(), "Invalid QR, Transaction Failed.");
+
+                            Handler handler = new Handler();
+
+                            handler.postDelayed(new Runnable() {
+                                public void run() {
+                                    getActivity().finish();
+                                }
+                            }, 1000);
+                        }
+                    });
+
+                }
+            });
+            return;
+        }
+
+
         Intent i = new Intent(getActivity(), UserProfileIDActivity.class);
         i.putExtra("id",id.toString());
         startActivity(i); getActivity().finish();
     }
 
 
-    public void getItemDetails(final String id){
+    public void getItemDetails(String id){
+
+
+        try
+        {
+            String[] parts= id.split(QR_KEY_PAY);
+            Log.d("debit_qr: ", parts[0]);
+            id = parts[1];
+
+        }catch ( Exception e )
+        {
+            Log.d("ExceptionE",e.getMessage());
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                            SnackBar.makeCustomErrorSnack(getActivity(), "Invalid QR, Transaction Failed.");
+
+                            Handler handler = new Handler();
+
+                            handler.postDelayed(new Runnable() {
+                                public void run() {
+                                    getActivity().finish();
+                                }
+                            }, 1000);
+                        }
+                    });
+
+                }
+            });
+            return;
+        }
+
 
         final HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("merchant_id",id);
         hashMap.put("user_id", new SessionManager(getActivity()).getId());
 
         Executor executor = Executors.newSingleThreadExecutor();
+        final String finalId = id;
         executor.execute(new Runnable() {
             public void run() {
 
@@ -234,7 +345,7 @@ public class BarCodeFragment extends Fragment implements ZBarScannerView.ResultH
                             String universal = row.getString("universal");
                             String discounted = row.getString("discounted");
 
-                            i.putExtra("merchant_id",id);
+                            i.putExtra("merchant_id", finalId);
                             i.putExtra("merchant_name",name);
                             i.putExtra("merchant_image",image);
                             i.putExtra("universal",universal);

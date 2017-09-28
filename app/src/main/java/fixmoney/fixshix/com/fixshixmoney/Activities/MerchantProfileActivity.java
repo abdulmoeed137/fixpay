@@ -87,7 +87,14 @@ public class MerchantProfileActivity extends FragmentActivity {
          Bundle extras = intent.getExtras();
         if (extras != null) {
             if (extras.containsKey("merchant_id")) {
+
               String id = extras.getString("merchant_id");
+                if (id.equals("1"))
+                {
+                    Toast.makeCustomErrorToast(MerchantProfileActivity.this,"You Cannot Transact With Admin");
+                    finish();
+                    return;
+                }
                 String name =  extras.getString("merchant_name");
                 String image =  extras.getString("merchant_image");
                 String universal =  extras.getString("universal");

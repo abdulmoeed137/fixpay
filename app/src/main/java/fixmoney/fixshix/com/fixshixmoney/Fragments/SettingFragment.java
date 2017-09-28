@@ -40,6 +40,7 @@ import fixmoney.fixshix.com.fixshixmoney.Snackbar.SnackBar;
 import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
+import static fixmoney.fixshix.com.fixshixmoney.Constants.Constants.QR_KEY_SHARE;
 
 /**
  * Created by lenovo on 7/5/2017.
@@ -88,7 +89,7 @@ public class SettingFragment extends Fragment {
 
                     try {
 
-                        bitmap = StringToQR.TextToImageEncode(new SessionManager(context).getId(), context);
+                        bitmap = StringToQR.TextToImageEncode(QR_KEY_SHARE+new SessionManager(context).getId(), context);
 
                         new SessionManager(context).setQrimage(bitmap,context);
 
