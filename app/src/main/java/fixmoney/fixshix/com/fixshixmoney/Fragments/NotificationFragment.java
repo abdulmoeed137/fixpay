@@ -120,6 +120,7 @@ public class NotificationFragment  extends Fragment {
                                 String isMerchant = row.getString("isMerchant");
                                 String notification ="";
                                 Double t_amount = Double.parseDouble(amount.trim());
+                                String merchant_id = row.getString("merchant_id");
 
                                 if (isUser.equals("1"))
                                 {
@@ -135,6 +136,10 @@ public class NotificationFragment  extends Fragment {
                                 {
                                     if (t_amount<0)
                                     {
+                                        if (merchant_id.equals("1"))
+                                        {
+                                            notification = "You Request to withdraw fund";
+                                        }else
                                         notification="You Paid "+merchant_name;
                                     }
                                     else

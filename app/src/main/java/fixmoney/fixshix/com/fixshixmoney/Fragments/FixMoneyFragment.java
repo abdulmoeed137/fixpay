@@ -22,6 +22,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import fixmoney.fixshix.com.fixshixmoney.Activities.ForgetPasswordActivity;
+import fixmoney.fixshix.com.fixshixmoney.Activities.FundWithdrawActivity;
 import fixmoney.fixshix.com.fixshixmoney.Activities.UploadFundsActivity;
 import fixmoney.fixshix.com.fixshixmoney.Constants.Constants;
 import fixmoney.fixshix.com.fixshixmoney.DialogBox;
@@ -40,7 +41,7 @@ import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
 
 public class FixMoneyFragment  extends Fragment {
     View rootView;
-  LinearLayout tab2,share, pay, merchant, upload_fund;
+  LinearLayout tab2,share, pay, merchant, upload_fund, withdraw_fund;
     TextView amount ;
     ImageButton refresh;
     Context context;
@@ -149,6 +150,13 @@ public class FixMoneyFragment  extends Fragment {
 
             }
         });
+
+        withdraw_fund.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, FundWithdrawActivity.class));
+            }
+        });
     }
 
     private void initialize() {
@@ -160,6 +168,7 @@ public class FixMoneyFragment  extends Fragment {
         upload_fund = (LinearLayout)rootView.findViewById(R.id.o2);
         refresh= (ImageButton)rootView.findViewById(R.id.refresh);
         progressBar = (ProgressBar)rootView.findViewById(R.id.pbar);
+        withdraw_fund = (LinearLayout)rootView.findViewById(R.id.o3);
 
     }
 

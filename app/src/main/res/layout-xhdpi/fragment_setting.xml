@@ -146,7 +146,7 @@
                     android:layout_height="1dp"
                     android:background="@color/mainColor"></LinearLayout>
                 <LinearLayout
-                    android:visibility="gone"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -159,14 +159,14 @@
                         android:src="@drawable/settings_icon"/>
 
                     <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
-                        android:id="@+id/cgpa"
+                        android:id="@+id/change_password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/fbutton_color_midnight_blue"
                         android:textSize="14dp"
                         android:layout_marginTop="13dp"
-                        android:text="@string/setting" />
+                        android:text="Change Password" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"

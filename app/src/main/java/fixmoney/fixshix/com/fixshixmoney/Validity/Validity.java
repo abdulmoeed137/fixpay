@@ -73,6 +73,51 @@ public class Validity {
         }
         else return true;
     }
+    static public boolean isBankNameTrue(String name,Context context)
+    {
+
+        if (name.isEmpty()) {
+
+            setStatus("Bank Name Is Empty!",context);
+            return false;
+        }
+        if (name.length()<=4)
+        {
+            setStatus("Bank Name too short!",context);
+            return false;
+        }
+        else return true;
+    }
+    static public boolean isTitleTrue(String name,Context context)
+    {
+
+        if (name.isEmpty()) {
+
+            setStatus("Title Is Empty!",context);
+            return false;
+        }
+        if (name.length()<=4)
+        {
+            setStatus("Title too short!",context);
+            return false;
+        }
+        else return true;
+    }
+    static public boolean isAccNumberTrue(String name,Context context)
+    {
+
+        if (name.isEmpty()) {
+
+            setStatus("Account Number Is Empty!",context);
+            return false;
+        }
+        if (name.length()<=4)
+        {
+            setStatus("Account Number too short!",context);
+            return false;
+        }
+        else return true;
+    }
     static public boolean isContactTrue(String s,Context context)
     {
 

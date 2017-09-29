@@ -287,6 +287,7 @@ public class MerchantProfileActivity extends FragmentActivity {
                                                         public void run() {
 
                                                             JSONObject response = HttpRequest.SyncHttpRequest(MerchantProfileActivity.this, Constants.make_transaction, hashMap, progressBar);
+                                                            Log.d("yoyo", response + "");
 
                                                             if (response != null) {
                                                                 try {
@@ -316,19 +317,36 @@ public class MerchantProfileActivity extends FragmentActivity {
 
                                                                     } else if (response.names().get(0).equals("failed")) {
 
-                                                                        SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Transaction can't proceed.");
-                                                                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                                                       runOnUiThread(new Runnable() {
+                                                                            @Override
+                                                                            public void run() {
+                                                                                SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Transaction can't proceed.");
+                                                                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                                                                            }
+                                                                        });
+
 
                                                                     } else {
+                                                                        runOnUiThread(new Runnable() {
+                                                                            @Override
+                                                                            public void run() {
+                                                                                SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Server Maintenance is on Progress");
+                                                                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                                                            }
+                                                                        });
 
-                                                                        SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Server Maintenance is on Progress");
-                                                                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                                                                     }
                                                                 } catch (JSONException e) {
 
-                                                                    SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Server Maintenance is on Progress");
-                                                                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                                                    runOnUiThread(new Runnable() {
+                                                                        @Override
+                                                                        public void run() {
+                                                                            SnackBar.makeCustomErrorSnack(MerchantProfileActivity.this, "Server Maintenance is on Progress");
+                                                                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                                                        }
+                                                                    });
 
                                                                 }
                                                             }
