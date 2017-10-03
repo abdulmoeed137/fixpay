@@ -64,7 +64,7 @@ public class DashboardActivity extends AppCompatActivity {
         View view4 = inflater.inflate(R.layout.tab_text_layout, null);
         TextView text4= (TextView) view4.findViewById(R.id.tab_text);
         ImageView imageView4 = (ImageView)view4.findViewById(R.id.tab_img);
-        text4.setText("Setting");
+        text4.setText("Settings");
         imageView4.setImageDrawable(getResources().getDrawable(R.drawable.setting));
 
 

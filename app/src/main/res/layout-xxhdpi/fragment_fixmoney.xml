@@ -253,7 +253,7 @@
                         android:textColor="@color/fbutton_color_midnight_blue"
 
                         android:layout_marginTop="13dp"
-                        android:text="Request Withdraw" />
+                        android:text="Request Withdrawl" />
                 </LinearLayout>
             </LinearLayout>
 

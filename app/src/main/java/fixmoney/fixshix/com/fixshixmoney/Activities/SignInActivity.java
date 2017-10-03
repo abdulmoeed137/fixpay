@@ -12,19 +12,24 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.crash.FirebaseCrash;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.transitionseverywhere.TransitionManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import fixmoney.fixshix.com.fixshixmoney.Constants.Constants;
+import fixmoney.fixshix.com.fixshixmoney.Firebase.FirebaseInstanceIDService;
 import fixmoney.fixshix.com.fixshixmoney.HttpRequest.HttpRequest;
 import fixmoney.fixshix.com.fixshixmoney.R;
 import fixmoney.fixshix.com.fixshixmoney.SessionManager.SessionManager;
@@ -84,7 +89,11 @@ public class SignInActivity extends AppCompatActivity {
                 editTextLayouts.setVisibility(View.VISIBLE);
                 startClick=1;}
                 else if(startClick == 1){
+                    FirebaseMessaging.getInstance().subscribeToTopic("test");
+                    FirebaseInstanceIDService firebaseInstanceIDService = new FirebaseInstanceIDService();
 
+                    String token = FirebaseInstanceId.getInstance().getToken();
+                    //FirebaseInstanceId.getInstance().setPersistenceEnabled(true);
                     String txt_contact = contact. getText(). toString();
                     String txt_password = password. getText() . toString();
 
@@ -94,6 +103,7 @@ public class SignInActivity extends AppCompatActivity {
 
                         hashMap.put("contact", txt_contact);
                         hashMap.put("password", txt_password);
+                        hashMap.put("token",token);
 
                         Executor executor = Executors.newSingleThreadExecutor();
                         executor.execute(new Runnable() {

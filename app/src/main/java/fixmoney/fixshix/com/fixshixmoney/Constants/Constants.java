@@ -22,6 +22,7 @@ public class Constants {
     public  static  String total_transaction = MAINURL+"total_transaction.php";
     public  static  String CheckUniversalBalance = MAINURL+"CheckUniversalBalance.php";
     public  static  String WithdrawRequest = MAINURL+"WithdrawRequest.php";
+    public  static  String isPasswordTrue = MAINURL+"isPasswordTrue.php";
 
 
     public  static  String IMAGE_FOLDER = MAINURL+"../merchant_images/";

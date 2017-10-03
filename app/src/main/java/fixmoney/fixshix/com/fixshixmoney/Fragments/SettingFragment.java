@@ -31,6 +31,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import fixmoney.fixshix.com.fixshixmoney.Activities.ChangePasswordActivity;
 import fixmoney.fixshix.com.fixshixmoney.Activities.SignInActivity;
 import fixmoney.fixshix.com.fixshixmoney.Activities.TermsAndConditionsActivity;
 import fixmoney.fixshix.com.fixshixmoney.QrCode.StringToQR;
@@ -156,6 +157,13 @@ public class SettingFragment extends Fragment {
                 ClipData clip = ClipData.newPlainText("label",new SessionManager(context).getId());
                 clipboard.setPrimaryClip(clip);
                 SnackBar.makeCustomSnack(context,"ID copies to Clipboard");
+            }
+        });
+
+        rootView.findViewById(R.id.change_password).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, ChangePasswordActivity.class));
             }
         });
     }
