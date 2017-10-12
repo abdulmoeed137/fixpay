@@ -40,7 +40,7 @@ public class DialogBox  {
         dialog.findViewById(R.id.o1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, "o1", Toast.LENGTH_SHORT).show();
+
                 activity.startActivity(new Intent(activity,UserProfileIDActivity.class));
 
             }
@@ -50,7 +50,7 @@ public class DialogBox  {
             public void onClick(View v) {
                 scan_flow="share";
                 activity.startActivity(new Intent(activity, ScanActivity.class));
-                Toast.makeText(activity, "o2", Toast.LENGTH_SHORT).show();
+
             }
         });
 

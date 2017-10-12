@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.crash.FirebaseCrash;
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.transitionseverywhere.TransitionManager;
@@ -34,8 +34,8 @@ import fixmoney.fixshix.com.fixshixmoney.HttpRequest.HttpRequest;
 import fixmoney.fixshix.com.fixshixmoney.R;
 import fixmoney.fixshix.com.fixshixmoney.SessionManager.SessionManager;
 import fixmoney.fixshix.com.fixshixmoney.Snackbar.SnackBar;
-import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
 import fixmoney.fixshix.com.fixshixmoney.Validity.Validity;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by lenovo on 7/4/2017.
@@ -56,16 +56,16 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
-          initialize();
-           setUpComponent();
+        Fabric.with(this, new Crashlytics());
 
-    }
+        setContentView(R.layout.activity_login);
+        initialize();
+        setUpComponent();
+      }
 
     private void setUpComponent() {
-;       contact.setText("3452121442");
-        password.setText("abcd1234");
+//;       contact.setText("3452121442");
+//        password.setText("abcd1234");
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

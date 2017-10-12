@@ -58,6 +58,10 @@
             </intent-filter>
         </service>
         <activity android:name=".Activities.ChangePasswordActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="50cf4b609d355b6f7ca018b3411dd6aab2a2ad4b"
+            />
     </application>
 
 </manifest>
