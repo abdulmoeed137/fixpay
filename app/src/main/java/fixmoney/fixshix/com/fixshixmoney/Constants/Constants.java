@@ -5,7 +5,7 @@ package fixmoney.fixshix.com.fixshixmoney.Constants;
  */
 
 public class Constants {
-    public  static  String MAINURL = "http://fixshix.com/fixshix_money_api/";
+    public  static  String MAINURL = "http://fixpay.pk/fixshix_money_api/";
     public  static  String login = MAINURL+"login.php";
     public  static  String signup = MAINURL+"registration.php";
     public  static  String all_merchant = MAINURL+"all_merchant.php";
@@ -28,7 +28,7 @@ public class Constants {
     public  static  String IMAGE_FOLDER = MAINURL+"../merchant_images/";
 
 
-    public  static  String SESSION="FixshixMoney";
+    public  static  String SESSION="FixshixMoneyFinal";
 
     public  static  String QR_KEY_RECEIVE="2382784738r3847834392382989238";
 

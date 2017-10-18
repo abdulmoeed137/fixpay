@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
+
 import fixmoney.fixshix.com.fixshixmoney.R;
 import fixmoney.fixshix.com.fixshixmoney.Adapter.DashboardPagerAdapter;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by lenovo on 7/5/2017.

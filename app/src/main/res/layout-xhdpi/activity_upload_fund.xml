@@ -84,7 +84,7 @@
             android:textSize="18dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You can easily upload funds in your universal wallet\nYou can transfer amount in FixShix Account and send us receipt at our Whatsapp Number.\n\nAccount Details : MCB Bank ( 1101119922334488) \n\n**Amount will be deposited in your account after 30 minutes of received receipt** "/>
+            android:text="You can Easily Upload Funds by Transfering your Desired Amount into Fixshix's Account and Sending us a Receipt at our Whatsapp Number.\n\nAccount Details : HBL Bank ( 11017900329203 )\nAccount Title: Abdul Moeed \n\n**Amount will be deposited in your account after 30 minutes of received receipt** "/>
         <Button
                 android:id="@+id/ok"
                 android:layout_width="match_parent"

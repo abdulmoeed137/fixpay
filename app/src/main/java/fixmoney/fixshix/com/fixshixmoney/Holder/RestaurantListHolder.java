@@ -8,6 +8,6 @@ import android.widget.TextView;
  */
 
 public class RestaurantListHolder {
-  public TextView merchant_id,name,email,contact,amount;
+  public TextView merchant_id,name,email,contact,amount,m_id;
     public ImageView image;
 }

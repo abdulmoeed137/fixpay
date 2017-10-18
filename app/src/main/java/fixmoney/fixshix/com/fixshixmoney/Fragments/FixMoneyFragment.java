@@ -160,6 +160,7 @@ public class FixMoneyFragment  extends Fragment {
     }
 
     private void initialize() {
+
         tab2 = (LinearLayout)rootView.findViewById(R.id.tab2);
         share= (LinearLayout)rootView.findViewById(R.id.share);
         pay= (LinearLayout)rootView.findViewById(R.id.pay);

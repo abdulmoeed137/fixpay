@@ -61,6 +61,7 @@ public MerchanttListAdapter(Context c, ArrayList<MerchantListModel> list )
             holder.contact = (TextView)convertView.findViewById(R.id.contact);
             holder.image = (ImageView)convertView.findViewById(R.id.image);
             holder.amount = (TextView)convertView.findViewById(R.id.amount);
+            holder.m_id = (TextView)convertView.findViewById(R.id.m_id);
 
             convertView.setTag(holder);
         }else
@@ -70,6 +71,7 @@ public MerchanttListAdapter(Context c, ArrayList<MerchantListModel> list )
             holder.email.setText(item.getEmail());
             holder.contact.setText(item.getContact());
             holder.amount.setText(utils.double2decimal(Double.parseDouble(item.getAmount())).toString());
+            holder.m_id.setText(item.getMerchant_id());
         utils.LoadImageFromURL(context,item.getImage(),holder.image);
 
         return convertView;

@@ -154,7 +154,7 @@ public class FinalShareActivity extends AppCompatActivity {
                                                                         public void run() {
                                                                             getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                                                                                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                                                                            SnackBar.makeCustomSnack(FinalShareActivity.this, "Transaction Proceed.");
+                                                                            SnackBar.makeCustomSnack(FinalShareActivity.this, "Transaction Processed.");
 
                                                                             Handler handler = new Handler();
 

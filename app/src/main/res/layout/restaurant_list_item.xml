@@ -71,7 +71,10 @@
                         android:textColor="@color/fbutton_color_midnight_blue"
                         android:layout_marginBottom="5dp"
                         android:id="@+id/name" />
+
+
                     <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="abc@yahoo.com"
@@ -86,10 +89,30 @@
                         android:text="03442928117"
                         android:textSize="9dp"
                         android:textColor="@color/fbutton_color_wet_asphalt"
-                        android:layout_marginBottom="10dp"
+
                         android:id="@+id/contact" />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Merchant ID: "
+                            android:textSize="12dp"
+                            android:textColor="@color/fbutton_color_pomegranate"
 
+                            />
+                        <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:id="@+id/m_id"
+                            android:textSize="20dp"
+                            android:textColor="@color/fbutton_color_pomegranate"
+
+                            />
+                    </LinearLayout>
 
 
 
