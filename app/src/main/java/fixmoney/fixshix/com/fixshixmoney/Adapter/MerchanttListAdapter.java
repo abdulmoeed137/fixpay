@@ -72,7 +72,7 @@ public MerchanttListAdapter(Context c, ArrayList<MerchantListModel> list )
             holder.contact.setText(item.getContact());
             holder.amount.setText(utils.double2decimal(Double.parseDouble(item.getAmount())).toString());
             holder.m_id.setText(item.getMerchant_id());
-        utils.LoadImageFromURL(context,item.getImage(),holder.image);
+             utils.LoadImageFromURL(context,item.getImage(),holder.image);
 
         return convertView;
     }
