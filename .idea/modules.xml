@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FixShixMoney.iml" filepath="$PROJECT_DIR$/FixShixMoney.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fixpay.iml" filepath="$PROJECT_DIR$/fixpay.iml" />
     </modules>
   </component>
 </project>

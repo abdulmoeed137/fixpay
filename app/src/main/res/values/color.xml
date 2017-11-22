@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
-    <color name="colorAccent">#000000</color>
+    <color name="colorAccent">#b43737</color>
     <color name="bar_color">#19b5fe</color>
 
     <color name="white">#ffffff</color>
@@ -68,5 +68,10 @@
 
 
 
+
+    <color name="colorGrayLight">#c9c9c9</color>
+    <color name="colorGrayMiddle">#8c8c99</color>
+    <color name="colorGrayDark">#6e6e7f</color>
+    <color name="colorGrayDarkMore">#58585b</color>
 
 </resources>

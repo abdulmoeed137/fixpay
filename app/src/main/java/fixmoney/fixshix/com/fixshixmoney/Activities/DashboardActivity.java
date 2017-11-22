@@ -37,13 +37,13 @@ public class DashboardActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(homePager);
         LayoutInflater inflater = LayoutInflater.from(this);
 
-//
-//        View view1 = inflater.inflate(R.layout.tab_text_layout, null);
-//        TextView text = (TextView) view1.findViewById(R.id.tab_text);
-//        ImageView imageView = (ImageView)view1.findViewById(R.id.tab_img);
-//        text.setText("Fixshix");
-//        imageView.setImageDrawable(getResources().getDrawable(R.drawable.fixshix));
-//        tabLayout.getTabAt(0).setCustomView(view1);
+
+        View view1 = inflater.inflate(R.layout.tab_text_layout, null);
+        TextView text = (TextView) view1.findViewById(R.id.tab_text);
+        ImageView imageView = (ImageView)view1.findViewById(R.id.tab_img);
+        text.setText("Merchants");
+        imageView.setImageDrawable(getResources().getDrawable(R.drawable.fixshix));
+        tabLayout.getTabAt(0).setCustomView(view1);
 
 
         View view2 = inflater.inflate(R.layout.tab_text_layout, null);
@@ -51,7 +51,7 @@ public class DashboardActivity extends AppCompatActivity {
         ImageView imageView2 = (ImageView)view2.findViewById(R.id.tab_img);
         text2.setText("Fixwallet");
         imageView2.setImageDrawable(getResources().getDrawable(R.drawable.fixwallet));
-        tabLayout.getTabAt(0).setCustomView(view2);
+        tabLayout.getTabAt(1).setCustomView(view2);
 
 
         View view3 = inflater.inflate(R.layout.tab_text_layout, null);
@@ -60,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity {
         text3.setText("Notifications");
         imageView3.setImageDrawable(getResources().getDrawable(R.drawable.notification));
 
-      tabLayout.getTabAt(1).setCustomView(view3);
+      tabLayout.getTabAt(2).setCustomView(view3);
 
 
 
@@ -71,7 +71,7 @@ public class DashboardActivity extends AppCompatActivity {
         imageView4.setImageDrawable(getResources().getDrawable(R.drawable.setting));
 
 
-       tabLayout.getTabAt(2).setCustomView(view4);
+       tabLayout.getTabAt(3).setCustomView(view4);
 
     }
 

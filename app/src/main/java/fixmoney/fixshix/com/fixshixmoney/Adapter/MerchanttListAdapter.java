@@ -1,6 +1,7 @@
 package fixmoney.fixshix.com.fixshixmoney.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import fixmoney.fixshix.com.fixshixmoney.Activities.DashboardActivity;
+import fixmoney.fixshix.com.fixshixmoney.Activities.MenuListActivity;
+import fixmoney.fixshix.com.fixshixmoney.Activities.SignInActivity;
 import fixmoney.fixshix.com.fixshixmoney.Holder.RestaurantListHolder;
 import fixmoney.fixshix.com.fixshixmoney.Model.MerchantListModel;
 import fixmoney.fixshix.com.fixshixmoney.R;
 import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
+
+import static fixmoney.fixshix.com.fixshixmoney.R.id.m_id;
 
 /**
  * Created by lenovo on 7/15/2017.
@@ -61,7 +67,7 @@ public MerchanttListAdapter(Context c, ArrayList<MerchantListModel> list )
             holder.contact = (TextView)convertView.findViewById(R.id.contact);
             holder.image = (ImageView)convertView.findViewById(R.id.image);
             holder.amount = (TextView)convertView.findViewById(R.id.amount);
-            holder.m_id = (TextView)convertView.findViewById(R.id.m_id);
+            holder.m_id = (TextView)convertView.findViewById(m_id);
 
             convertView.setTag(holder);
         }else
@@ -73,6 +79,9 @@ public MerchanttListAdapter(Context c, ArrayList<MerchantListModel> list )
             holder.amount.setText(utils.double2decimal(Double.parseDouble(item.getAmount())).toString());
             holder.m_id.setText(item.getMerchant_id());
              utils.LoadImageFromURL(context,item.getImage(),holder.image);
+
+
+
 
         return convertView;
     }

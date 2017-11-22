@@ -30,6 +30,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -40,6 +41,7 @@ import fixmoney.fixshix.com.fixshixmoney.Activities.SignUpActivity;
 import fixmoney.fixshix.com.fixshixmoney.Constants.Constants;
 import fixmoney.fixshix.com.fixshixmoney.DialogBox;
 import fixmoney.fixshix.com.fixshixmoney.HttpRequest.HttpRequest;
+import fixmoney.fixshix.com.fixshixmoney.Model.MenutListModel;
 import fixmoney.fixshix.com.fixshixmoney.R;
 import fixmoney.fixshix.com.fixshixmoney.SessionManager.SessionManager;
 import fixmoney.fixshix.com.fixshixmoney.Snackbar.SnackBar;
@@ -51,6 +53,7 @@ import fixmoney.fixshix.com.fixshixmoney.Validity.Validity;
  */
 
 public class utils {
+    static public ArrayList<MenutListModel> mlist = new ArrayList<>();
     static public String URLwithParams (String url , HashMap<String,String> hashMap)
     {
 

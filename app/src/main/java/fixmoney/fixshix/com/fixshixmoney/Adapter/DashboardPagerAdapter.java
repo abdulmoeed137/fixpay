@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import fixmoney.fixshix.com.fixshixmoney.Fragments.FixMoneyFragment;
+import fixmoney.fixshix.com.fixshixmoney.Fragments.FixshixFragment;
 import fixmoney.fixshix.com.fixshixmoney.Fragments.NotificationFragment;
 import fixmoney.fixshix.com.fixshixmoney.Fragments.SettingFragment;
 
@@ -23,20 +24,20 @@ public class DashboardPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Log.d("yoyoyoyo",position+"");
-//        if(position ==0)
-//        {
-//
-//            return new FixshixFragment();
-//        }
         if(position ==0)
         {
-            return new FixMoneyFragment();
+
+            return new FixshixFragment();
         }
         if(position ==1)
         {
+            return new FixMoneyFragment();
+        }
+        if(position ==2)
+        {
             return new NotificationFragment();
         }
-        else if (position == 2){
+        else if (position == 3){
             return new SettingFragment();}
         else
             return null;
@@ -44,6 +45,6 @@ public class DashboardPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 }

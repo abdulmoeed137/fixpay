@@ -29,6 +29,10 @@
         <activity android:name=".Activities.ScanActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".Activities.MerchantProfileActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.MenuListActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.CardListActivity"
             android:screenOrientation="portrait">
 
 
