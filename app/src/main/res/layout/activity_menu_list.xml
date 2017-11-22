@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="1.0">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.9"
+        android:gravity="center"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:paddingBottom="5dp"
+        android:background="@color/mainColor"
+        android:orientation="horizontal"
+
+
+      >
+
+
+
+        <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+            android:id="@+id/captureTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp"/>
+
+        />-->
+
+       <!-- <ImageView
+            android:id="@+id/basket"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:src="@drawable/basket"
+            android:textSize="16dp" />
+
+
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="40dp"
+
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorAccent"
+            android:foregroundGravity="center"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="6dp" />
+-->
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/header_line"/>
+
+    <LinearLayout
+        android:layout_weight="0.1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:padding="6dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+
+        <ProgressBar
+            android:id="@+id/pbar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_weight="1" />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listView1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/pbar"
+            android:layout_toEndOf="@+id/pbar">
+        </ListView>
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_alignParentRight="true"
+                android:id="@+id/frame_basket"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="50dp"
+
+                >
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/basket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:src="@drawable/ic_shopping_cart_white_24dp"
+                    app:backgroundTint="@color/mainColor"
+                    app:fabSize="normal" />
+
+                <TextView
+                    android:id="@+id/count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:elevation="16dp"
+                    android:paddingBottom="35dp"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
