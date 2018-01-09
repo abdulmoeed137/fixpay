@@ -66,7 +66,9 @@ public class SignInActivity extends AppCompatActivity {
     private void setUpComponent() {
 //;       contact.setText("3452121442");
 //        password.setText("abcd1234");
-        handler.postDelayed(new Runnable() {
+        handler.postDelayed(
+
+                new Runnable() {
             @Override
             public void run() {
                 //Do something after 100ms

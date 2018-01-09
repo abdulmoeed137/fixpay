@@ -5,16 +5,17 @@ package fixmoney.fixshix.com.fixshixmoney.Model;
  */
 
 public class MenutListModel {
-    private  String menu_id,menu_name,menu_desc,menu_price,merchant_id;
+    private  String menu_id,menu_name,menu_desc,menu_price,merchant_id,cashback, image;
 
-    public MenutListModel(String menu_id,String menu_name, String menu_desc , String menu_price, String merchant_id)
+    public MenutListModel(String menu_id, String menu_name, String menu_desc, String menu_price, String merchant_id, String cashback,String image)
         {
             this.menu_id = menu_id;
             this.menu_name = menu_name;
             this.menu_desc = menu_desc;
             this.menu_price = menu_price;
             this.merchant_id = merchant_id;
-
+            this.cashback = cashback;
+            this.image= image;
         }
 
     public String getmenu_id() {
@@ -58,4 +59,15 @@ public class MenutListModel {
     }
 
 
+    public String getCashback() {
+        return cashback;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

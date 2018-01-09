@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:gravity="center_vertical"
+                android:minHeight="44dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+
+                    android:gravity="center_vertical">
+
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/name_container"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="7dp"
+                        android:text="Rs "
+                        android:textColor="@color/fbutton_color_pomegranate"
+                        android:textSize="15dp" />
+
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:id="@+id/amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/name_container"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="10dp"
+                        android:text=" 20"
+                        android:textColor="@color/fbutton_color_pomegranate"
+                        android:textSize="22dp" />
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/name_container"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="10dp">
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CashBack : "
+                        android:textSize="10dp"/>
+
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:id="@+id/cashback"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:textSize="14dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/name_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/tawseel_container"
+
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:id="@+id/m_name"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="4dp"
+                        android:text="Merchant_name"
+                        android:textColor="@color/fbutton_color_midnight_blue"
+                        android:textSize="14dp" />
+
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:id="@+id/time"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="1dp"
+                        android:text="Date"
+                        android:textColor="@color/fbutton_color_pomegranate"
+                        android:textSize="10dp" />
+                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                        android:id="@+id/status"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="1dp"
+                        android:text="Delivered"
+                        android:textColor="@color/fbutton_color_pomegranate"
+                        android:textSize="10dp" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

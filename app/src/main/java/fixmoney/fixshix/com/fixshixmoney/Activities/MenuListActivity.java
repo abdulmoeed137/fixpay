@@ -1,19 +1,18 @@
 package fixmoney.fixshix.com.fixshixmoney.Activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,15 +24,17 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import fixmoney.fixshix.com.fixshixmoney.Adapter.MenuListAdapter;
-import fixmoney.fixshix.com.fixshixmoney.Adapter.MerchanttListAdapter;
 import fixmoney.fixshix.com.fixshixmoney.Constants.Constants;
-import fixmoney.fixshix.com.fixshixmoney.Holder.MenuListHolder;
 import fixmoney.fixshix.com.fixshixmoney.HttpRequest.HttpRequest;
 import fixmoney.fixshix.com.fixshixmoney.Model.MenutListModel;
 
 import fixmoney.fixshix.com.fixshixmoney.R;
 import fixmoney.fixshix.com.fixshixmoney.SessionManager.SessionManager;
 import fixmoney.fixshix.com.fixshixmoney.Snackbar.SnackBar;
+import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
+
+import static fixmoney.fixshix.com.fixshixmoney.Utilities.utils.merchant_id;
+import static fixmoney.fixshix.com.fixshixmoney.Utilities.utils.mlist;
 
 /**
  * Created by lenovo on 7/15/2017.
@@ -59,9 +60,6 @@ public class MenuListActivity extends AppCompatActivity {
     private void setUpComponent() {
         this.context = this;
 
-        Intent intent = getIntent();
-        String id = intent.getStringExtra("Merchant_id");
-
         basket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,42 +67,11 @@ public class MenuListActivity extends AppCompatActivity {
                 Intent i = new Intent(context, CardListActivity.class);
                 startActivity(i);
 
-
-
-
-
             }
         });
 
-
-
-
-
-
-        Bundle extras = intent.getExtras();
-        if (extras != null) {
-            if (extras.containsKey("isClick")) {
-               listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                   @Override
-                   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                       if (Double.parseDouble(list.get(position).getmenu_price())>0.00){
-                       Intent i = new Intent(MenuListActivity.this,FinalShareActivity.class);
-                       i.putExtra("menu_name",(list.get(position).getmenu_name().toString()));
-                           i.putExtra("menu_desc",(list.get(position).getmenu_desc().toString()));
-                       i.putExtra("menu_price",(list.get(position).getmenu_price().toString()));
-                       startActivityForResult(i,100);
-                       }
-                       else
-                       {
-                           SnackBar.makeCustomErrorSnack(context,"Don't have enough amount to transfer.");
-                       }
-                   }
-               });
-            }
-
-        }
         final HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("id", id);
+        hashMap.put("id", merchant_id);
 
 
         Executor executor = Executors.newSingleThreadExecutor();
@@ -117,7 +84,7 @@ public class MenuListActivity extends AppCompatActivity {
                     try {
 
                         if (response.names().get(0).equals("success")) {
-                            Double menu_price =0.0;
+
                             Log.d("errorr",response+"");
                             JSONArray data = response.getJSONArray("success");
 
@@ -125,22 +92,22 @@ public class MenuListActivity extends AppCompatActivity {
                             {
                                  JSONObject row = data.getJSONObject(i);
 
-                                menu_price = menu_price+Double.parseDouble(row.getString("menu_price"));
+
                                  list.add(new MenutListModel(
                                          row.getString("menu_id"),
                                         row.getString("menu_name"),
                                          row.getString("menu_desc"),
                                          row.getString("menu_price"),
-                                         row.getString("merchant_id")
-
-                                 ));
+                                         row.getString("merchant_id"),
+                                        row.getString("cashback"),
+                                         row.getString("menu_image")));
                             }
-                            final Double finalAmount = menu_price;
+
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     listView.setAdapter(new MenuListAdapter(context,list));
-                                    new SessionManager().setAmount(context, finalAmount.toString());
+
 
                                 }
                             });
@@ -164,6 +131,10 @@ public class MenuListActivity extends AppCompatActivity {
             }
         });
     }
+    public static void total_array_item() {
+
+        count.setText(mlist.size()+"");
+    }
 
     private void initialize() {
      listView= (ListView)findViewById(R.id.listView1);
@@ -178,13 +149,31 @@ public class MenuListActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if ( requestCode == 100)
-            if (resultCode == RESULT_OK) {
-                setResult(RESULT_OK);
-                finish();
-            }  }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        total_array_item();
+    }
+    @Override
+    public void onBackPressed() {
+
+
+        new AlertDialog.Builder(context)
+
+                .setTitle("Confirm")
+                .setMessage("Your Cart Will Be Empty If You Leave?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        mlist.clear();
+                        finish();
+                    }})
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+    }
 }

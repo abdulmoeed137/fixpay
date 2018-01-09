@@ -1,6 +1,7 @@
 package fixmoney.fixshix.com.fixshixmoney.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import fixmoney.fixshix.com.fixshixmoney.Holder.MenuListHolder;
 import fixmoney.fixshix.com.fixshixmoney.Model.CardListModel;
 import fixmoney.fixshix.com.fixshixmoney.Model.MenutListModel;
 import fixmoney.fixshix.com.fixshixmoney.R;
+import fixmoney.fixshix.com.fixshixmoney.Toast.Toast;
 import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
 
 import static android.R.id.list;
@@ -67,7 +69,7 @@ public CardListAdapter(Context c, ArrayList<MenutListModel> list )
             holder.menu_desc = (TextView)convertView.findViewById(R.id.menu_desc);
             holder.menu_price = (TextView)convertView.findViewById(R.id.amount);
             holder.minus_order = (ImageView) convertView.findViewById(R.id.minus);
-
+            holder.cashback = (TextView)convertView.findViewById(R.id.cashback);
 
             convertView.setTag(holder);
         }else
@@ -77,17 +79,18 @@ public CardListAdapter(Context c, ArrayList<MenutListModel> list )
 
             holder.menu_desc.setText(item.getmenu_desc());
             holder.menu_price.setText(utils.double2decimal(Double.parseDouble(item.getmenu_price())).toString());
-           /* holder.m_id.setText(item.getMerchant_id());*/
-            /* utils.LoadImageFromURL(context,item.getImage(),holder.image);*/
+              holder.cashback.setText(item.getCashback());
 
 
-        holder.minus_order.setOnClickListener(new View.OnClickListener() {
+               holder.minus_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
 
                 utils.mlist.remove(position);
                 notifyDataSetChanged();
+                CardListActivity.total_array_item();
+                Toast.makeCustomErrorToast(context,"Item removed");
 
 
 

@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
@@ -19,14 +18,16 @@
             android:id="@+id/order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="0dp">
+            app:cardElevation="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginBottom="4dp"
-                android:id="@+id/container">
+                android:layout_marginBottom="4dp">
 
                 <LinearLayout
 
@@ -41,12 +42,9 @@
                         android:id="@+id/minus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/minus"  />
-
+                        android:src="@drawable/minuss" />
 
                 </LinearLayout>
-
-
 
 
                 <RelativeLayout
@@ -93,7 +91,7 @@
                     android:id="@+id/naina"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="17dp"
                     android:layout_toRightOf="@+id/view3"
                     android:orientation="vertical">
 
@@ -101,43 +99,62 @@
                         android:id="@+id/menu_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+
                         android:text="Flour"
                         android:textColor="@color/colorGrayDarkMore"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                     <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
                         android:id="@+id/menu_desc"
-                        android:layout_width="match_parent"
+                        android:layout_width="150sp"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/naina"
-                        android:layout_marginTop="7dp"
+
                         android:text="White Flour"
                         android:textColor="@color/colorGrayMiddle"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
-                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
-                        android:id="@+id/m_id"
-                        android:layout_width="match_parent"
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:layout_weight="1"
-                        android:text="Merchant ID"
-                        android:textColor="@color/colorGrayMiddle"
-                        android:textSize="14sp" />
+                        android:gravity="center_vertical">
+                        <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
 
-                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
-                        android:id="@+id/amount"
-                        android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rs: "
+                            android:textColor="@color/colorGrayMiddle"
+                            android:textSize="23sp" />
+                        <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                            android:id="@+id/amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/naina"
+                            android:text="23"
+                            android:textColor="@color/colorGrayMiddle"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/naina"
-                        android:layout_marginTop="7dp"
+                        android:gravity="center_vertical">
 
-                        android:layout_weight="2"
-                        android:text="Rs @0"
-                        android:textColor="@color/colorGrayMiddle"
-                        android:textSize="14sp" />
-
+                        <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CashBack: "
+                            android:textColor="@color/red_light"
+                            android:textSize="20sp" />
+                        <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
+                            android:id="@+id/cashback"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="23"
+                            android:textColor="@color/colorGrayMiddle"
+                            android:textSize="15sp" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -146,170 +163,5 @@
         </android.support.v7.widget.CardView>
 
     </RelativeLayout>
-
-
-
-    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="100dp"
-            app:cardUseCompatPadding="true"
-            >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:minHeight="100dp"
-                android:id="@+id/container">
-
-
-                <LinearLayout
-
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true">
-
-
-                    <ImageView
-                        android:id="@+id/minus"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/minus" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/name_container"
-                    android:orientation="vertical"
-                  android:layout_marginLeft="20dp"
-                    android:gravity="center_vertical"
-                    android:layout_toRightOf="@+id/tawseel_container">
-
-
-                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Flour"
-                        android:textSize="17dp"
-                        android:textColor="@color/fbutton_color_midnight_blue"
-                        android:layout_marginBottom="5dp"
-                        android:id="@+id/menu_name" />
-
-
-                   &lt;!&ndash; <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
-                        android:visibility="gone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="abc@yahoo.com"
-                        android:textSize="12dp"
-                        android:textColor="@color/fbutton_color_pomegranate"
-                        android:layout_marginBottom="3dp"
-                        android:id="@+id/email" />&ndash;&gt;
-
-                    <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="White Flour"
-                        android:textSize="9dp"
-                        android:textColor="@color/fbutton_color_wet_asphalt"
-
-                        android:id="@+id/menu_desc" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-
-                        <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/name_container"
-                            android:text="Rs "
-                            android:textSize="12dp"
-                            android:textColor="@color/fbutton_color_pomegranate"/>
-
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="20dp"
-                            android:layout_alignBottom="@+id/name_container"
-                            android:id="@+id/amount"
-                            android:layout_alignParentRight="true"
-                            android:text=" 20"
-                            android:textSize="12dp"
-                            android:textColor="@color/fbutton_color_pomegranate"
-                            />
-
-                       &lt;!&ndash; <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Merchant ID: "
-                            android:textSize="12dp"
-                            android:textColor="@color/fbutton_color_pomegranate"
-
-                            />
-                        <fixmoney.fixshix.com.fixshixmoney.CustomBoldTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1"
-                            android:id="@+id/m_id"
-                            android:textSize="20dp"
-                            android:textColor="@color/fbutton_color_pomegranate"
-
-                            />&ndash;&gt;
-                    </LinearLayout>
-
-
-
-
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/circle_border"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:id="@+id/tawseel_container">
-
-
-                   <ImageView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:src="@drawable/fixshixlogo"
-                       android:id="@+id/image"/>
-
-
-                </LinearLayout>
-
-
-            </RelativeLayout>
-
-        </android.support.v7.widget.CardView>
-
-
-
-
-
-
-
-
-    </RelativeLayout>-->
 
 </LinearLayout>

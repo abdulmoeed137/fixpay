@@ -23,8 +23,9 @@ public class Constants {
     public  static  String CheckUniversalBalance = MAINURL+"CheckUniversalBalance.php";
     public  static  String WithdrawRequest = MAINURL+"WithdrawRequest.php";
     public  static  String isPasswordTrue = MAINURL+"isPasswordTrue.php";
-
     public  static  String all_menu = MAINURL+"all_menu.php";
+    public  static  String new_order = MAINURL+"new_order.php";
+    public  static  String order_history = MAINURL+"order_history.php";
 
 
     public  static  String IMAGE_FOLDER = MAINURL+"../merchant_images/";

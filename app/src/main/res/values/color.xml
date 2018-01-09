@@ -10,6 +10,12 @@
     <color name="mainColorLow">#f761b655</color>
     <color name="mainColorLoww">#f771d464</color>
     <color name="mainColorLowww">#eb84df78</color>
+
+    <color name="button_white">#ffffff</color>
+    <color name="mainColorGreenNew">#5cb34b</color>
+    <color name="mainColorWhiteNew">#f2f5f7</color>
+
+
     <color name="text_primary">@color/mainColor</color>
     <color name="text_secondary">@color/mainColor</color>
     <color name="transparent">@android:color/transparent</color>
@@ -73,5 +79,10 @@
     <color name="colorGrayMiddle">#8c8c99</color>
     <color name="colorGrayDark">#6e6e7f</color>
     <color name="colorGrayDarkMore">#58585b</color>
+
+
+
+
+
 
 </resources>

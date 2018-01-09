@@ -9,7 +9,7 @@ import android.widget.TextView;
  */
 
 public class CardListHolder {
-  public TextView menu_id,menu_name,menu_desc,menu_price,merchant_id;
+  public TextView menu_id,menu_name,menu_desc,menu_price,merchant_id,cashback;
     public ImageView image;
   public ImageView minus_order;
 }

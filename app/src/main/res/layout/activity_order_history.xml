@@ -2,11 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:weightSum="1.0">
-
-
+    android:weightSum="1.0" >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +13,6 @@
         android:paddingLeft="20dp"
         android:paddingBottom="5dp"
         android:background="@color/mainColor"
-        android:orientation="horizontal"
       >
 
 
@@ -25,15 +21,10 @@
             android:id="@+id/captureTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Menu/Product"
-
+            android:text="Order History"
             android:gravity="center"
             android:textColor="#000000"
             android:textSize="20sp"/>
-
-        />-->
-
-
 
     </LinearLayout>
 
@@ -52,7 +43,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         <ProgressBar
             android:id="@+id/pbar"
             style="?android:attr/progressBarStyle"
@@ -64,43 +54,9 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listView1"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/pbar"
-            android:layout_toEndOf="@+id/pbar">
+            android:id="@+id/listView"
+            >
         </ListView>
-
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_alignParentRight="true"
-                android:id="@+id/frame_basket"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="50dp">
-
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/basket"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
-                    android:src="@drawable/ic_shopping_cart_white_24dp"
-                    app:backgroundTint="@color/mainColor"
-                    app:fabSize="normal" />
-
-                <TextView
-                    android:id="@+id/count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:elevation="16dp"
-                    android:paddingBottom="35dp"
-                    android:text="0"
-                    android:textColor="@color/white"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-            </FrameLayout>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

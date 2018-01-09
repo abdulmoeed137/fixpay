@@ -1,15 +1,15 @@
 package fixmoney.fixshix.com.fixshixmoney.Adapter;
 
 import android.content.Context;
-import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -18,6 +18,7 @@ import fixmoney.fixshix.com.fixshixmoney.Holder.MenuListHolder;
 
 import fixmoney.fixshix.com.fixshixmoney.Model.MenutListModel;
 import fixmoney.fixshix.com.fixshixmoney.R;
+import fixmoney.fixshix.com.fixshixmoney.Toast.Toast;
 import fixmoney.fixshix.com.fixshixmoney.Utilities.utils;
 
 /**
@@ -65,6 +66,8 @@ public MenuListAdapter(Context c, ArrayList<MenutListModel> list )
             holder.menu_desc = (TextView)convertView.findViewById(R.id.menu_desc);
             holder.menu_price = (TextView)convertView.findViewById(R.id.amount);
             holder.add_order = (ImageView) convertView.findViewById(R.id.add);
+            holder.cashback = (TextView)convertView.findViewById(R.id.cashback);
+            holder.image = (ImageView) convertView.findViewById(R.id.image);
 
 
             convertView.setTag(holder);
@@ -75,23 +78,25 @@ public MenuListAdapter(Context c, ArrayList<MenutListModel> list )
 
             holder.menu_desc.setText(item.getmenu_desc());
             holder.menu_price.setText(utils.double2decimal(Double.parseDouble(item.getmenu_price())).toString());
-           /* holder.m_id.setText(item.getMerchant_id());*/
-            /* utils.LoadImageFromURL(context,item.getImage(),holder.image);*/
+        Log.d("hahaha", "http://fixshix.com/fixshix_money_api/merchant_api/"+item.getImage());
+      //  utils.LoadImageFromURL(context,"http://fixshix.com/fixshix_money_api/merchant_api/"+item.getImage(),holder.image);
+            holder.cashback.setText(item.getCashback());
 
-
-        holder.add_order.setOnClickListener(new View.OnClickListener() {
+                 holder.add_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
 
-                utils.mlist.add(new MenutListModel(item.getmenu_id(),item.getmenu_name(),item.getmenu_desc(),item.getmenu_price(),item.getmerchant_id()));
-                    /*display.setText("" + numtest);
-*/
+                utils.mlist.add(new MenutListModel(item.getmenu_id(),item.getmenu_name(),item.getmenu_desc(),item.getmenu_price(),item.getmerchant_id(), item.getCashback(),item.getImage()));
+
                 MenuListActivity.count.setText(utils.mlist.size()+"");
+                Toast.makeCustomToast(context,"Added to cart");
 
 
             }
         });
+
+
 
 
         return convertView;

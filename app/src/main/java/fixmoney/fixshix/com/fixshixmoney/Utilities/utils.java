@@ -53,6 +53,7 @@ import fixmoney.fixshix.com.fixshixmoney.Validity.Validity;
  */
 
 public class utils {
+    static public   String merchant_id = "";
     static public ArrayList<MenutListModel> mlist = new ArrayList<>();
     static public String URLwithParams (String url , HashMap<String,String> hashMap)
     {
